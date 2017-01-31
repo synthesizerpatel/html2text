@@ -6,6 +6,8 @@ from setuptools import setup, Command, find_packages
 try:
     from pypandoc import convert
     read_md = lambda f: convert(f, 'rst')
+except IOError as e:
+    print(e)
 except ImportError:
     read_md = lambda f: open(f, 'r').read()
 
